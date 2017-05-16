@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/cloudfoundry-community/go-cfenv"
-	"github.com/cloudnativego/cf-tools"
 	"github.com/cloudnativego/drones-cmds/fakes"
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -40,15 +39,16 @@ func initRoutes(mx *mux.Router, formatter *render.Render, telemetryDispatcher qu
 }
 
 func resolveAMQPURL(appEnv *cfenv.App) string {
-	url, err := cftools.GetVCAPServiceProperty("rabbit", "url", appEnv)
-	if err != nil {
-		fmt.Println("Failed to detect bound service for rabbit. Falling back to in-memory dispatcher (fake)")
-		return "fake://foo"
-	}
-	if len(url) < 10 {
-		fmt.Printf("URL detected for bound rabbit service not valid, was '%s'. Falling back to in-memory fake.\n", url)
-		return "fake://foo"
-	}
+	//url, err := cftools.GetVCAPServiceProperty("rabbit", "url", appEnv)
+	//if err != nil {
+		//fmt.Println("Failed to detect bound service for rabbit. Falling back to in-memory dispatcher (fake)")
+		//return "fake://foo"
+	//}
+	//if len(url) < 10 {
+		//fmt.Printf("URL detected for bound rabbit service not valid, was '%s'. Falling back to in-memory fake.\n", url)
+		//return "fake://foo"
+	//}
+  url := "amqp://guest:guest@127.0.0.1:5672/"
 	return url
 }
 
