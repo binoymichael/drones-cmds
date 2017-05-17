@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/cloudfoundry-community/go-cfenv"
-	service "github.com/binoymichael/drones-cmds/service"
+	service "app/service"
 )
 
 func main() {
