@@ -1,17 +1,3 @@
-# Build drone-cmds-image
-```
-docker build -t my-drone-cmds-image .
-```
-
-# Run drone-cmds in interactive mode
-```
-docker run -it --rm --name my-drone-cmds-app -p 3000:3000 my-drone-cmds-image
-
-curl -i -X POST http://localhost:3000/api/cmds/telemetry \
-     -H "Content-Type: application/json" \
-     -d "{\"drone_id\":\"drone666\",\"battery\":72,\"uptime\":6941,\"core_temp\":21}"
-```
-
 # Drone-cmds + rabbitmq
 ### Build modified docker image
 ```
@@ -32,4 +18,8 @@ curl -i -X POST http://localhost:3000/api/cmds/telemetry \
      -d "{\"drone_id\":\"drone666\",\"battery\":72,\"uptime\":6941,\"core_temp\":21}"
 
 # Check rabbitmq admin to check if message was inserted
+
+Note - Use the docker-machine ip instead of localhost if docker is running on
+a virtual machine
+
 ```
