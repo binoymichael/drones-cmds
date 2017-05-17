@@ -48,7 +48,7 @@ func resolveAMQPURL(appEnv *cfenv.App) string {
 		//fmt.Printf("URL detected for bound rabbit service not valid, was '%s'. Falling back to in-memory fake.\n", url)
 		//return "fake://foo"
 	//}
-  url := "amqp://guest:guest@127.0.0.1:5672/"
+  url := "amqp://guest:guest@rabbit:5672/"
 	return url
 }
 
@@ -62,7 +62,7 @@ func buildDispatcher(queueName string, appEnv *cfenv.App) queueDispatcher {
 }
 
 func createAMQPDispatcher(queueName string, url string) queueDispatcher {
-	fmt.Printf("\nUsing URL (%s) for Rabbit.\n", url)
+	fmt.Printf("\nUsed URL (%s) for Rabbit.\n", url)
 
 	conn, err := amqp.Dial(url)
 	failOnError(err, "Failed to connect to RabbitMQ")
