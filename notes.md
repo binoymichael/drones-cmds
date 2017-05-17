@@ -13,12 +13,6 @@ curl -i -X POST http://localhost:3000/api/cmds/telemetry \
 ```
 
 # Drone-cmds + rabbitmq
-### Connect with docker rabbitmq instance
-- Change rabbitmq url in server.go to 
-  ```
-  url := "amqp://guest:guest@rabbit:5672/"
-  ```
-
 ### Build modified docker image
 ```
 docker build -t my-drone-cmds-image .
